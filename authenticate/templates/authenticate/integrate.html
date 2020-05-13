@@ -1,0 +1,33 @@
+{% extends 'authenticate/base.html' %}
+{% block title_block%}API{% endblock %}
+
+{% block content %}
+<h1>Get API</h1>
+{% if user.is_authenticated %}
+    {%if sent%}
+      <h1>Email Successfully sent!!!</h1>
+      {%else%}
+        <p>Get Your Free API By Email</p>
+            <form method='POST'>
+            {{form.as_p}}
+            {%csrf_token%}
+            <input type="submit" class='btn btn-secondary btn-lg' value="Send Mail">
+          </form>
+    {%endif%}
+
+
+
+
+
+
+
+
+{% else %}
+    <p>Please Login To Get API</p>
+     <a href="{% url "login"%}"><button type="submit" class="btn btn-secondary">Login</button></a>
+{% endif %}
+
+
+
+
+{% endblock %}
